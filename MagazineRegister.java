@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
+ * LALALALLALALLALALA
  * Represents a register for magazines.
  * This version will hold a collection of magazines. 
  * MagazineRegister has the following functions:
