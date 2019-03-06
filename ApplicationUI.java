@@ -195,7 +195,7 @@ public class ApplicationUI
         }
     }
 
-    /**   UTVID
+    /**   UTVID ENDA MEIRS
      * Checks if input string from user is valid.
      * Returns false if input is starts with '"'. 
      * @param input The input String to test
