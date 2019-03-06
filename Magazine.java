@@ -18,21 +18,24 @@ public class Magazine
     private String publisher;
     private String genre;
     private String numPublications;
+    private int edition;
 
     /**
      * Constructor for objects of class Magazine
      * @param title The title of the magazine.
      * @param publisher The publisher of the magazine.
      * @param genre The genre of the magazine.
+     * @param edition The edition of the magazine.
      * @param numPublications The number of publications over a year.
      */
     public Magazine(String title, String publisher, String genre,
-    String numPublications)
+    String numPublications, int edition)
     {
-        this.title = title;
-        this.publisher = publisher;
-        this.genre = genre;
-        this.numPublications = numPublications;
+        this.title = title.trim();
+        this.publisher = publisher.trim();
+        this.genre = genre.trim();
+        this.numPublications = numPublications.trim();
+        this.edition = edition;
     }
 
     /**
@@ -73,5 +76,15 @@ public class Magazine
     public String getNumbPublications()
     {
         return this.numPublications;
+    }
+    
+    /**
+     * getEdition retrives a magazine's edition.
+     *
+     * @return edition Returns int in edition field.
+     */
+    public int getEdition()
+    {
+        return edition;
     }
 }

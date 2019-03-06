@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * LALALALLALALLALALA
  * Represents a register for magazines.
  * This version will hold a collection of magazines. 
  * MagazineRegister has the following functions:
@@ -62,7 +61,7 @@ public class MagazineRegister
      * @return true if same title for magazine is found, false if not
      */
     public boolean addNewMagazine(String title, String publisher, String genre,
-    String numPublications)
+    String numPublications, int edition)
     {
         boolean valid = true;
         for (Magazine magazine : magazines)
@@ -75,11 +74,26 @@ public class MagazineRegister
         if (valid)
         {
             magazines.add(new Magazine(title, publisher,
-                genre, numPublications));
+                genre, numPublications, edition));
         }
         return valid;
     }
 
+    /**
+     * addNewMagazineOLD adds magazines to collection.
+     * 
+     * @param title The title of the magazine.
+     * @param publisher The publisher of the magazine. 
+     * @param genre The genre of the magazine.
+     * @param edition The edition of the magazine.
+     * @param numPublications The number of publications over a year.
+     */
+    public void addNewMagazineOLD(String title, String publisher, String genre,
+    int edition, String numPublications)
+    {
+        magazines.add(new Magazine(title, publisher, genre, numPublications, edition));
+    }
+    
     /**
      * Removes a magazine from magazine register whose titles
      * exactly matches searchstring, removes the magazine and returns

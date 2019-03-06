@@ -172,12 +172,16 @@ public class ApplicationUI
 
         System.out.print("Please enter the number of publications of the magazine: ");
         String numPublications = getInputString();
+        
+        System.out.print("Please enter the edition of the magazine: ");
+        int edition = getInputInt();
 
         if (validStringInput(title) && validStringInput(publisher) &&
-                validStringInput(genre) && validStringInput(numPublications)) 
+                validStringInput(genre) && validStringInput(numPublications)
+                && validIntInput(edition)) 
         {
             if (!magazineRegister.addNewMagazine(title, publisher,
-                    genre, numPublications))
+                    genre, numPublications, edition))
             {
                 System.out.println("\nCan't add duplicate title\n");
             }
@@ -186,7 +190,7 @@ public class ApplicationUI
                 System.out.println("\nSuccessfully added magazine with title \""
                     + title + "\".");
                 magazineRegister.addNewMagazine(title, publisher,
-                    genre, numPublications);
+                    genre, numPublications, edition);
             }
         }
         else
@@ -210,7 +214,14 @@ public class ApplicationUI
         }
         return valid;
     }
-
+    
+    private boolean validIntInput(int input) {
+     boolean value = false;
+        if(input>0){
+        value = true;
+        }
+        return value;
+    }
     /**
      * Find and display a magazine based on title of magazine.
      * Asks user for title of magazine, checks input against magazine register.
@@ -303,7 +314,8 @@ public class ApplicationUI
         {
             System.out.print("Title: " + magazine.getTitle() + ", Publisher: " + magazine.getPublisher());
             System.out.print(", Genre: " + magazine.getGenre());
-            System.out.println(", Num. of publications " + magazine.getNumbPublications());
+            System.out.print(", Num. of publications " + magazine.getNumbPublications());
+            System.out.println(", Edition: " + magazine.getEdition());
         }
         else
         {
@@ -324,6 +336,29 @@ public class ApplicationUI
 
         return returnString;
     }
+    
+    /** 
+     * Makes a new scanner object, takes a int input from user,closes the scanner object 
+     * and then returns the int.
+     * @return returnString the int from user input
+     */
+    private int getInputInt()
+    {
+        Scanner reader = new Scanner(System.in);
+        int returnInt = 0;
+        try
+        {
+            returnInt = reader.nextInt();
+        }
+        catch (InputMismatchException ime)
+            {
+                System.out.println("\nERROR: Please provide a number");
+            }
+        
+        reader.close();
+
+        return returnInt;
+    }
 
     /**
      * Adds dummy items to magazine collection.
@@ -332,13 +367,13 @@ public class ApplicationUI
      */
     private void addDummyMagazines()
     {
-        magazineRegister.addNewMagazine("Se og Hør", "Aller Media", "Kjendis", "52");
-        magazineRegister.addNewMagazine("Her og Nå", "Egmont", "Kjendis", "52");
-        magazineRegister.addNewMagazine("Hytteliv", "Egmont", "Livsstil", "12");
-        magazineRegister.addNewMagazine("KK", "Aller Media", "Livsstil", "12");
-        magazineRegister.addNewMagazine("Vi Over 60", "Aller Media", "Livsstil", "12");
-        magazineRegister.addNewMagazine("Spiderman", "Marvel", "Comics", "24");
-        magazineRegister.addNewMagazine("Hawkeye", "Marvel", "Comics", "24");
+        magazineRegister.addNewMagazine("Se og Hør", "Aller Media", "Kjendis", "52",2);
+        magazineRegister.addNewMagazine("Her og Nå", "Egmont", "Kjendis", "52",2);
+        magazineRegister.addNewMagazine("Hytteliv", "Egmont", "Livsstil", "12",2);
+        magazineRegister.addNewMagazine("KK", "Aller Media", "Livsstil", "12",2);
+        magazineRegister.addNewMagazine("Vi Over 60", "Aller Media", "Livsstil", "12",2);
+        magazineRegister.addNewMagazine("Spiderman", "Marvel", "Comics", "24",2);
+        magazineRegister.addNewMagazine("Hawkeye", "Marvel", "Comics", "24",2);
     }
 
 }
