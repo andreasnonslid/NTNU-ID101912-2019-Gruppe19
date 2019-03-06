@@ -85,6 +85,6 @@ public class Magazine
      */
     public int getEdition()
     {
-        return edition;
+        return this.edition;
     }
 }
